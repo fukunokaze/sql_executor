@@ -1,5 +1,5 @@
--- Create a stored procedure with GO statement
-CREATE PROCEDURE GetUserByEmail
+-- Create stored procedures (idempotent using CREATE OR ALTER)
+CREATE OR ALTER PROCEDURE GetUserByEmail
     @Email NVARCHAR(100)
 AS
 BEGIN
@@ -9,8 +9,8 @@ BEGIN
 END;
 GO
 
--- Create another stored procedure
-CREATE PROCEDURE GetAllUsers
+-- Create another stored procedure (idempotent)
+CREATE OR ALTER PROCEDURE GetAllUsers
 AS
 BEGIN
     SELECT UserId, Username, Email, CreatedDate
